@@ -1,0 +1,16 @@
+container:
+  type: HtmlTemplate
+  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
+    role: null, html: '@theme:three_slots.html'}
+components:
+- type: form:Tickets.NewTicket.Customer
+  properties: {}
+  name: assign_customer
+  layout_properties: {slot: slot-2}
+  data_bindings:
+  - {property: item, code: self.customer}
+- type: form:Tickets.NewTicket.Details
+  properties: {}
+  name: newticket_details
+  layout_properties: {slot: slot-1}
+is_package: true

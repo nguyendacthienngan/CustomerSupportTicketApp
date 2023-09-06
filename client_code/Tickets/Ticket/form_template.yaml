@@ -1,0 +1,269 @@
+container:
+  type: HtmlTemplate
+  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
+    role: null, html: '@theme:three_slots.html'}
+  event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
+components:
+- type: form:Customers.Customer.Details
+  properties: {}
+  name: customer_details
+  layout_properties: {slot: slot-3}
+  data_bindings:
+  - {property: item, code: 'self.item[''customer'']'}
+- type: form:Tickets.Ticket.Info
+  properties: {}
+  name: ticket
+  layout_properties: {slot: slot-1}
+  data_bindings:
+  - {property: item, code: self.item}
+- type: ColumnPanel
+  properties: {role: filter-form-shadow, tooltip: '', border: '', foreground: '',
+    visible: true, wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}',
+    spacing_below: none, background: ''}
+  name: ticket_details
+  layout_properties: {slot: slot-2}
+  components:
+  - type: ColumnPanel
+    properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"ZTPEUH":2,"MUSPMU":58}',
+      spacing_below: small, background: ''}
+    name: column_panel_1_copy
+    layout_properties:
+      col_widths: {}
+      grid_position: JMIBRO,LGBGLH
+    components:
+    - type: Spacer
+      properties: {height: 32}
+      name: spacer_1
+      layout_properties: {grid_position: 'JFBEHH,ZTPEUH'}
+    - type: Label
+      properties: {role: header-text, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Ticket Details, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: medium, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_1
+      layout_properties: {grid_position: 'JFBEHH,MUSPMU'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Title:', font_size: null, font: '', spacing_above: medium,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2_copy_3
+    layout_properties:
+      col_widths: {}
+      grid_position: HMASMC,QZTRGH
+  - type: TextBox
+    properties: {role: textbox-input, align: left, hide_text: false, tooltip: '',
+      placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '',
+      font_size: null, font: '', spacing_above: small, type: text, spacing_below: small,
+      italic: false, background: '', bold: false, underline: false}
+    name: title_box
+    layout_properties:
+      col_widths: {}
+      grid_position: UGYKFB,GXVNJM
+    data_bindings:
+    - {property: text, code: 'self.ticket_copy[''title'']', writeback: true}
+    event_bindings: {pressed_enter: ticket_title_edit, lost_focus: ticket_title_edit}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Category:', font_size: null, font: '', spacing_above: medium,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2_copy
+    layout_properties:
+      col_widths: {}
+      grid_position: FBDGVN,ZSPFXL
+  - type: DropDown
+    properties:
+      role: dropdown-border
+      align: full
+      tooltip: ''
+      placeholder: select a category
+      border: ''
+      enabled: true
+      foreground: ''
+      items: ['']
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: false
+    name: category_dropdown
+    layout_properties:
+      col_widths: {}
+      grid_position: KDCQKK,FUKXKQ
+    data_bindings:
+    - {property: selected_value, code: 'self.ticket_copy[''category'']', writeback: true}
+    - {property: items, code: self.categories}
+    event_bindings: {change: update_ticket}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Status:', font_size: null, font: '', spacing_above: medium,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties:
+      col_widths: {}
+      grid_position: PMPHJU,BOKFYP
+  - type: DropDown
+    properties:
+      role: dropdown-border
+      align: full
+      tooltip: ''
+      placeholder: select a status
+      border: ''
+      enabled: true
+      foreground: ''
+      items: ['', '']
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: false
+    name: status_dropdown
+    layout_properties:
+      col_widths: {}
+      grid_position: JAIDPU,MACADY
+    data_bindings:
+    - {property: selected_value, code: 'self.ticket_copy[''status'']', writeback: true}
+    - {property: items, code: self.status}
+    event_bindings: {change: update_ticket}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Priority:', font_size: null, font: '', spacing_above: medium,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2_copy_2
+    layout_properties:
+      col_widths: {}
+      grid_position: FHORKS,PJVTZY
+  - type: DropDown
+    properties:
+      role: dropdown-border
+      align: full
+      tooltip: ''
+      placeholder: select a priority
+      border: ''
+      enabled: true
+      foreground: ''
+      items: ['']
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: false
+    name: priority_dropdown
+    layout_properties:
+      col_widths: {}
+      grid_position: EUQUHB,LJBDRJ
+    data_bindings:
+    - {property: selected_value, code: 'self.ticket_copy[''priority'']', writeback: true}
+    - {property: items, code: self.priorities}
+    event_bindings: {change: update_ticket}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Agent:', font_size: null, font: '', spacing_above: medium,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2_copy_4
+    layout_properties:
+      col_widths: {}
+      grid_position: ZWGQWN,ZFIVSU
+  - type: DropDown
+    properties:
+      role: dropdown-border
+      align: full
+      tooltip: ''
+      placeholder: select an agent
+      border: ''
+      enabled: true
+      foreground: ''
+      items: ['', '']
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
+    name: agent_dropdown
+    layout_properties:
+      col_widths: {}
+      grid_position: SDHCDU,LEOVWO
+    data_bindings:
+    - {property: items, code: self.agents}
+    - {property: selected_value, code: 'self.ticket_copy[''owner'']', writeback: true}
+    event_bindings: {change: update_ticket}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Due:', font_size: null, font: '', spacing_above: medium,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: due_label
+    layout_properties:
+      col_widths: {}
+      grid_position: GKRRBT,BEXKMR
+  - type: DatePicker
+    properties: {role: dropdown-border, align: left, max_date: '', pick_time: false,
+      tooltip: '', placeholder: '', border: '', enabled: true, foreground: '', visible: true,
+      font_size: null, font: '', spacing_above: small, spacing_below: small, italic: false,
+      date: '', min_date: '', background: '', bold: false, underline: false, format: '%d/%m/%Y'}
+    name: date_picker_1
+    layout_properties:
+      col_widths: {}
+      grid_position: BGGMMJ,IGZZBK
+    data_bindings:
+    - {property: date, code: 'self.ticket_copy[''due'']', writeback: true}
+    event_bindings: {change: update_ticket}
+  - type: Spacer
+    properties: {height: 44}
+    name: spacer_2
+    layout_properties:
+      col_widths: {}
+      grid_position: KADZOT,DBRLQY
+  - type: FlowPanel
+    properties: {role: null, spacing: medium, align: justify, tooltip: '', border: '',
+      foreground: '', visible: false, spacing_above: small, spacing_below: small,
+      background: ''}
+    name: flow_panel_1
+    layout_properties: {grid_position: 'SZJHZM,ZOUBMS'}
+    components:
+    - type: Link
+      properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: 'theme:Gray
+          800', visible: true, text: Cancel, font_size: null, wrap_on: mobile, font: '',
+        col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
+        spacing_below: small, italic: false, background: '', bold: false, underline: false,
+        icon: ''}
+      name: cancel_link
+      layout_properties:
+        col_widths: {}
+        grid_position: YDCFOU,EULLID
+      event_bindings: {}
+    - type: Button
+      properties: {role: secondary-button, align: center, tooltip: '', border: '',
+        enabled: true, foreground: '', visible: true, text: Save, font_size: null,
+        font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+        background: '', bold: false, underline: false, icon: 'fa:check-circle'}
+      name: save_button
+      layout_properties: {}
+      event_bindings: {}
+is_package: true
+custom_component: false

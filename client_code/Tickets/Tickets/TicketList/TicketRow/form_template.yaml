@@ -1,0 +1,151 @@
+container:
+  type: DataRowPanel
+  properties: {role: tickets-repeating-panel, align: left, tooltip: '', border: '',
+    foreground: '', auto_display_data: true, visible: true, font_size: null, font: '',
+    spacing_above: none, spacing_below: none, italic: false, background: '', bold: false,
+    underline: false}
+components:
+- type: FlowPanel
+  properties: {role: overdue-panel, spacing: medium, align: center, tooltip: '', border: '',
+    foreground: '', visible: false, spacing_above: small, spacing_below: small, background: ''}
+  name: status_label
+  layout_properties: {column: FEORLK}
+  components:
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: OVERDUE, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: status_label_text
+    layout_properties: {grid_position: 'BYXNNQ,YYCKDQ'}
+- type: CheckBox
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+    spacing_below: small, italic: false, background: '', bold: false, checked: false,
+    underline: false}
+  name: check_box_1
+  layout_properties: {column: FEORLK}
+  event_bindings: {change: check_box_1_change}
+- type: Link
+  properties: {role: muted-text, url: '', align: left, tooltip: '', border: '', foreground: '#332F5B',
+    visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
+    spacing_above: medium, icon_align: left, col_widths: '', spacing_below: none,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: cust_name_link
+  layout_properties: {column: DZHAXL}
+  data_bindings:
+  - {property: text, code: 'f"{self.item[''customer''][''first_name'']} {self.item[''customer''][''last_name'']}"'}
+  event_bindings: {click: cust_name_link_click}
+- type: FlowPanel
+  properties: {role: null, spacing: none, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, spacing_above: none, spacing_below: none, background: ''}
+  name: flow_panel_2
+  layout_properties: {column: DZHAXL}
+  components:
+  - type: Link
+    properties: {role: medium-text, url: '', align: left, tooltip: '', border: '',
+      foreground: 'theme:Gray 600', visible: true, text: '', font_size: null, wrap_on: mobile,
+      font: '', col_spacing: medium, spacing_above: none, icon_align: left, col_widths: '{}',
+      spacing_below: none, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: ticket_title_link
+    layout_properties: {column: DZHAXL}
+    data_bindings:
+    - {property: text, code: 'self.item[''title'']'}
+    event_bindings: {click: ticket_title_link_click}
+    components: []
+  - type: Image
+    properties: {role: null, vertical_align: center, height: 33, tooltip: '', border: '',
+      foreground: '', visible: true, display_mode: shrink_to_fit, spacing_above: none,
+      source: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAACX0lEQVR4nO3aMW4aQRhAYd8xbXCJcBUkUpFiC9zEBfewZXdEdEHkDIgWai7xp1iN4l3bIAw78zZ6T/orS9aOP+8O6/FNGKqb0hdgzQSBJQgsQWAJAksQWILAEgSWILAEgSUILEFgCQJLEFiCwBIEliCwBIElCCxBYAkCSxBYgsASBJYgsASBJQgsQWAJAksQWILAEgSWILAEgdU/kM02YrGMeJhH3I0jvnz9N5NpRHVff323L32ln6o/IJtt/cN+DXBqJtOI1br0lZ8VH+RwOB+iPaNx/X16EBtk9SdiMLwMI83tMOLXsvSKTsYFeXq5DkR7nl5Kr+xoTJDFshuMNOB9hQdyOFzvMXXs8QXdU3ggo3G3GGmq+9IrfTcWyGqdByPNZlt6xW9igXz/kRcEeJdwQHb7vBjQu4QD0vUnq49mwXo34YBc+jb+2XmYl155Iw5I7v0jzWhceuWNOCAlMNKAEkSQDxIkIkgg7cOmXDOZll55Iw7Iz3kZkGpWeuWNOCC+h0QECWSzLQOyZ529c0Ai8r8cwvaPCBpI7rsEeFDFAonId5fA3tBTPJAcJ4YDTwzPq+uDKtgnq9cxQSIiHp+7wXh8Lr2yo3FBIurf5Gs9vgbDiN+8TbwdGySiftZf+o8P1Qy7Z7Tjg6RW6/q94VwI2BHtqfoDktrt60dZNXsLdPet/pvYYtk7iFT/QP7zBIElCCxBYAkCSxBYgsASBJYgsASBJQgsQWAJAksQWILAEgSWILAEgSUILEFgCQJLEFiCwBIEliCwBIElCCxBYAkCSxBYgsASBJYgsASB9RfUsM+HfF1epwAAAABJRU5ErkJggg==',
+      spacing_below: none, background: '', horizontal_align: center}
+    name: image_1
+    layout_properties: {width: 33}
+    data_bindings:
+    - {property: visible, code: 'self.item[''priority''] == ''new'''}
+- type: FlowPanel
+  properties: {role: null, spacing: medium, align: left, tooltip: '', border: '',
+    foreground: '', visible: true, spacing_above: none, spacing_below: small, background: ''}
+  name: flow_panel_1
+  layout_properties: {column: DZHAXL}
+  components:
+  - type: Label
+    properties: {role: muted-text, align: left, tooltip: '', border: '', foreground: '#A9A9A9',
+      visible: true, text: '', font_size: null, font: '', spacing_above: none, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: ticket_cat_label
+    layout_properties: {}
+    data_bindings:
+    - {property: text, code: 'self.item[''category''][''name''] if self.item[''category'']
+        else '''''}
+  - type: Label
+    properties: {role: muted-text, align: left, tooltip: '', border: '', foreground: '#332F5B',
+      visible: true, text: '', font_size: null, font: '', spacing_above: none, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: agent_name_label
+    layout_properties: {}
+    data_bindings:
+    - {property: text, code: 'self.item[''owner''][''email''] if self.item[''owner'']
+        is not None else ""'}
+- type: Label
+  properties: {role: muted-text, align: left, tooltip: '', border: '', foreground: '#A9A9A9',
+    visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: date_label
+  layout_properties: {column: XZFXCS}
+  data_bindings:
+  - {property: text, code: 'self.item[''date''].strftime("%d %b %Y")'}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '#A9A9A9',
+    visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: 'fa:ellipsis-v'}
+  name: label_7
+  layout_properties: {column: JKSXLL}
+- type: FlowPanel
+  properties: {}
+  name: flow_panel_3
+  layout_properties: {column: USDYWJ}
+  components:
+  - type: DropDown
+    properties:
+      role: dropdown-no-border-muted
+      align: full
+      tooltip: ''
+      placeholder: 'choose priority '
+      border: ''
+      enabled: true
+      foreground: '#332F5B'
+      items: ['']
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: false
+    name: priority_dropdown
+    layout_properties: {column: USDYWJ}
+    data_bindings:
+    - {property: selected_value, code: 'self.item[''priority'']', writeback: false}
+    - {property: items, code: self.priorities}
+    event_bindings: {change: priority_dropdown_change}
+- type: Link
+  properties: {role: grey-link, url: '', align: left, tooltip: '', border: '', foreground: 'theme:Gray
+      100', visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
+    spacing_above: small, icon_align: left, col_widths: '{}', spacing_below: small,
+    italic: false, background: '', bold: false, underline: false, icon: 'fa:unlock-alt'}
+  name: link_1
+  layout_properties: {column: HCOREJ}
+  components: []
+- type: form:Icons.AvatarTransparent
+  properties: {}
+  name: avatar_transparent_1
+  layout_properties: {column: SVDJFK}
+is_package: true

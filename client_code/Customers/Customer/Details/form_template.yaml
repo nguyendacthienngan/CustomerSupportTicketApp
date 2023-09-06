@@ -1,0 +1,142 @@
+container:
+  type: HtmlTemplate
+  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
+    role: background-colour, html: '@theme:scroll_pane.html'}
+  event_bindings: {show: form_show, refreshing_data_bindings: form_refreshing_data_bindings}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: column_panel_1
+  layout_properties: {slot: slot-header}
+  components:
+  - type: FlowPanel
+    properties: {role: null, spacing: medium, align: justify, tooltip: '', border: '',
+      foreground: '', visible: true, spacing_above: small, spacing_below: medium,
+      background: ''}
+    name: flow_panel_1
+    layout_properties:
+      col_widths: {}
+      grid_position: OUPOWO,YYLREV
+    components:
+    - type: Label
+      properties: {role: header-text, align: left, tooltip: '', border: '', foreground: '#00FFB0',
+        visible: true, text: Customer Details, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_1
+      layout_properties: {grid_position: 'NPWDLT,IKNOZY'}
+    - type: FlowPanel
+      properties: {role: null, spacing: medium, align: right, tooltip: '', border: '',
+        foreground: '', visible: true, spacing_above: small, spacing_below: small,
+        background: ''}
+      name: flow_panel_3
+      layout_properties: {grid_position: 'RPECNJ,XFACKM'}
+      components:
+      - type: Link
+        properties: {role: null, url: '', align: right, tooltip: '', border: '', foreground: white,
+          visible: true, text: Edit, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
+          spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
+          italic: false, background: '', bold: false, underline: false, icon: ''}
+        name: edit_customer_link
+        layout_properties: {grid_position: 'ZDLBOV,PJSEYD'}
+        event_bindings: {click: edit_customer_link_click}
+      - type: Link
+        properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: white,
+          visible: true, text: Close, font_size: null, wrap_on: mobile, font: '',
+          col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '{}',
+          spacing_below: small, italic: false, background: '', bold: false, underline: false,
+          icon: ''}
+        name: close_pane_link
+        layout_properties: {grid_position: 'BMRFRC,DFBTYZ'}
+        components: []
+        event_bindings: {click: close_pane_link_click}
+  - type: form:Icons.AvatarBlank
+    properties: {}
+    name: avatar_blank_1
+    layout_properties:
+      col_widths: {}
+      grid_position: QUUPWP,EPNKVW
+  - type: Link
+    properties: {role: header-text, url: '', align: left, tooltip: '', border: '',
+      foreground: 'theme:Gray 100', visible: true, text: '', font_size: null, wrap_on: mobile,
+      font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: name_link
+    layout_properties: {grid_position: 'GBVJCE,BOYMML'}
+    data_bindings:
+    - {property: text, code: '"{} {}".format(self.item[''first_name''],self.item[''last_name''])'}
+    event_bindings: {click: name_link_click}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Muted
+        purple', visible: true, text: '', font_size: null, font: '', spacing_above: none,
+      icon_align: left, spacing_below: large, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: job_label
+    layout_properties:
+      col_widths: {}
+      grid_position: PHBSYZ,GUNQXP
+    data_bindings:
+    - {property: text, code: 'f"{self.item[''company'']}, {self.item[''title'']}"'}
+  - type: Label
+    properties: {role: muted-text, align: left, tooltip: '', border: '', foreground: 'theme:Muted
+        purple', visible: true, text: '', font_size: null, font: '', spacing_above: none,
+      icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: phone_label
+    layout_properties:
+      col_widths: {}
+      grid_position: FLYLCH,WXHGII
+    data_bindings:
+    - {property: text, code: 'self.item[''phone''] if self.item[''phone''] else '''''}
+  - type: Label
+    properties: {role: muted-text, align: left, tooltip: '', border: '', foreground: 'theme:Muted
+        purple', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: large, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: email_label
+    layout_properties:
+      col_widths: {}
+      grid_position: CSUCWJ,CBKUJZ
+    data_bindings:
+    - {property: text, code: 'self.item[''email''] if self.item[''email''] else '''''}
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: column_panel_2
+  layout_properties: {slot: slot-content}
+  components:
+  - type: FlowPanel
+    properties: {role: null, spacing: medium, align: justify, tooltip: '', border: '',
+      foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
+    name: flow_panel_2
+    layout_properties: {grid_position: 'XRPKAL,OBQHLE'}
+    components:
+    - type: Label
+      properties: {role: header-text, align: left, tooltip: '', border: '', foreground: '#00FFB0',
+        visible: true, text: Recent Tickets, font_size: null, font: '', spacing_above: medium,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_1_copy
+      layout_properties:
+        col_widths: {}
+        grid_position: OEJBOI,XJOPRY
+    - type: Button
+      properties: {role: primary-button, align: right, tooltip: '', border: '', enabled: true,
+        foreground: '', visible: true, text: ' New', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+        underline: false, icon: 'fa:plus-circle'}
+      name: new_ticket_button
+      layout_properties: {grid_position: 'OEJBOI,AKGMTS'}
+      event_bindings: {click: new_ticket_button_click}
+  - type: RepeatingPanel
+    properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
+      visible: true, spacing_above: small, spacing_below: small, item_template: Customers.Customer.Details.RecentTicket,
+      background: ''}
+    name: repeating_panel_1
+    layout_properties:
+      col_widths: {}
+      grid_position: VZJVZZ,IANCAH
+    data_bindings:
+    - {property: items, code: self.customer_tickets}
+custom_component: false
+is_package: true

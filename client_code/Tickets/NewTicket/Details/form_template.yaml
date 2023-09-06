@@ -1,0 +1,197 @@
+container:
+  type: HtmlTemplate
+  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
+    role: full-height-padding, html: '@theme:flex_col_three_slots.html'}
+components:
+- type: ColumnPanel
+  properties: {role: bottom-border, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: column_panel_1
+  layout_properties:
+    col_widths: {}
+    grid_position: DYFFKT,JAYDJV
+    full_width_row: true
+    slot: slot-header
+  components:
+  - type: FlowPanel
+    properties: {role: null, spacing: medium, align: justify, tooltip: '', border: '',
+      foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
+    name: flow_panel_4
+    layout_properties: {grid_position: 'KZOIRS,HSECSI', full_width_row: true}
+    components:
+    - type: Label
+      properties: {role: header-text, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: New Ticket Details, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_1
+      layout_properties: {}
+    - type: Label
+      properties: {role: header-text, align: left, tooltip: '', border: '', foreground: 'theme:Gray
+          100', visible: true, text: '#002', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: ticket_no_label
+      layout_properties: {grid_position: 'KZOIRS,HDAJMN', full_width_row: true}
+      data_bindings:
+      - {property: text, code: self.set_current_no()}
+  - type: FlowPanel
+    properties: {role: null, spacing: medium, align: left, tooltip: '', border: '',
+      foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
+    name: flow_panel_5
+    layout_properties: {grid_position: 'GGXLOG,KVRDOV', full_width_row: true}
+    components:
+    - type: TextBox
+      properties: {role: textbox-input, align: left, hide_text: false, tooltip: '',
+        placeholder: Enter Title, border: '', enabled: true, foreground: '', visible: true,
+        text: '', font_size: null, font: '', spacing_above: small, type: text, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false}
+      name: text_box_1
+      layout_properties: {grid_position: 'TBVSQE,ZNIIDP', full_width_row: true, width: 426.33299999999997}
+      data_bindings:
+      - {property: text, code: 'self.item[''title'']', writeback: true}
+    - type: DropDown
+      properties:
+        role: dropdown-border
+        align: full
+        tooltip: ''
+        placeholder: Select Priority
+        border: ''
+        enabled: true
+        foreground: ''
+        items: ['']
+        visible: true
+        font_size: null
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: drop_down_1
+      layout_properties: {grid_position: 'QPVNJD,NWIVAX'}
+      data_bindings:
+      - {property: selected_value, code: 'self.item[''priority'']', writeback: true}
+      - {property: items, code: self.priorities}
+    - type: DropDown
+      properties:
+        role: dropdown-border
+        align: full
+        tooltip: ''
+        placeholder: Select Category
+        border: ''
+        enabled: true
+        foreground: ''
+        items: ['']
+        visible: true
+        font_size: null
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: drop_down_2
+      layout_properties: {}
+      data_bindings:
+      - {property: selected_value, code: 'self.item[''category'']', writeback: true}
+      - {property: items, code: self.categories}
+    - type: DropDown
+      properties:
+        role: dropdown-border
+        align: full
+        tooltip: ''
+        placeholder: Select Agent
+        border: ''
+        enabled: true
+        foreground: ''
+        items: []
+        visible: true
+        font_size: null
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      name: drop_down_3
+      layout_properties: {}
+      data_bindings:
+      - {property: selected_value, code: 'self.item[''owner'']', writeback: true}
+      - {property: items, code: self.agents}
+    - type: DatePicker
+      properties: {role: dropdown-border, align: left, max_date: '', pick_time: false,
+        tooltip: '', placeholder: Select Due Date, border: '', enabled: true, foreground: '',
+        visible: true, font_size: null, font: '', spacing_above: small, spacing_below: small,
+        italic: false, date: '', min_date: '', background: '', bold: false, underline: false,
+        format: '%d %b %Y'}
+      name: date_picker_1
+      layout_properties: {width: 191.433}
+      data_bindings:
+      - {property: date, code: 'self.item[''due'']', writeback: true}
+- type: FlowPanel
+  properties: {role: top-border, spacing: medium, align: justify, tooltip: '', border: '',
+    foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
+  name: flow_panel_1
+  layout_properties:
+    col_widths: {}
+    grid_position: RJYIAQ,GOOUJE
+    full_width_row: true
+    slot: slot-header-2
+  components:
+  - type: Link
+    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: 'theme:Primary
+        500', visible: true, text: Cancel, font_size: null, wrap_on: mobile, font: '',
+      col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: cancel_button
+    layout_properties: {}
+    event_bindings: {click: cancel_button_click}
+  - type: Button
+    properties: {role: secondary-button, align: center, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Save, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:floppy-o'}
+    name: save_ticket_button
+    layout_properties: {grid_position: 'NSNOJG,ANEOBT', full_width_row: true}
+    event_bindings: {click: save_ticket_button_click}
+- type: ColumnPanel
+  properties: {role: sides-bottom-padding, tooltip: '', border: '', foreground: '',
+    visible: true, wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: column_panel_2
+  layout_properties:
+    col_widths: {}
+    grid_position: VHEYOG,TUEZXV
+    full_width_row: true
+    slot: slot-content
+  components:
+  - type: Spacer
+    properties: {height: 32}
+    name: spacer_1
+    layout_properties: {grid_position: 'OYNQDT,XTGREZ'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Details:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_3
+    layout_properties: {grid_position: 'JEMKLC,BRLAPF', full_width_row: true}
+  - type: TextArea
+    properties: {role: textarea-input, align: left, height: 361, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      auto_expand: false, font: '', spacing_above: small, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: text_area_1
+    layout_properties: {grid_position: 'JZOKRS,QQFFSM', full_width_row: true}
+    data_bindings:
+    - {property: text, code: self.details, writeback: true}
+is_package: true

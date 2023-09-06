@@ -1,0 +1,154 @@
+container:
+  type: HtmlTemplate
+  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
+    role: null, html: '@theme:homepage.html'}
+  event_bindings: {show: form_show}
+components:
+- type: Label
+  properties: {role: header-text, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: headline_label
+  layout_properties: {slot: title}
+- type: LinearPanel
+  properties: {}
+  name: linear_panel_2
+  layout_properties: {slot: sidebar-items}
+  components:
+  - type: Button
+    properties: {role: large-primary-button, align: center, tooltip: '', border: '',
+      enabled: true, foreground: '', visible: true, text: New, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: 'fa:plus-circle'}
+    name: new_ticket_button
+    layout_properties: {}
+    event_bindings: {click: new_ticket_button_click}
+- type: LinearPanel
+  properties: {}
+  name: links_panel
+  layout_properties: {slot: sidebar-items-2}
+  components:
+  - type: FlowPanel
+    properties: {role: dash-link, spacing: none, align: left, tooltip: '', border: '',
+      foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
+    name: dash_panel
+    layout_properties: {}
+    components:
+    - type: Spacer
+      properties: {height: 32}
+      name: spacer_1
+      layout_properties: {width: 14}
+    - type: form:Icons.DashboardSVG
+      properties: {}
+      name: dashboard_sv_g_1
+      layout_properties: {}
+    - type: Link
+      properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Dashboard, font_size: null, wrap_on: mobile, font: '',
+        col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '{}',
+        spacing_below: small, italic: false, background: '', bold: false, underline: false,
+        icon: ''}
+      name: dash_link
+      layout_properties: {}
+      event_bindings: {click: dash_link_click}
+      components: []
+  - type: FlowPanel
+    properties: {role: dash-link, spacing: none, align: left, tooltip: '', border: '',
+      foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
+    name: ticket_panel
+    layout_properties: {}
+    components:
+    - type: Spacer
+      properties: {height: 32}
+      name: spacer_1_copy
+      layout_properties: {width: 14}
+    - type: form:Icons.TicketsSVG
+      properties: {}
+      name: tickets_sv_g_1
+      layout_properties: {}
+    - type: Link
+      properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Tickets, font_size: null, wrap_on: mobile, font: '',
+        col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '{}',
+        spacing_below: small, italic: false, background: '', bold: false, underline: false,
+        icon: ''}
+      name: ticket_link
+      layout_properties: {}
+      event_bindings: {click: ticket_link_click}
+      components: []
+  - type: FlowPanel
+    properties: {role: dash-link, spacing: none, align: left, tooltip: '', border: '',
+      foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
+    name: customer_panel
+    layout_properties: {}
+    components:
+    - type: Spacer
+      properties: {height: 32}
+      name: spacer_1_copy_2
+      layout_properties: {width: 14}
+    - type: form:Icons.CustomersSVG
+      properties: {}
+      name: customers_sv_g_1
+      layout_properties: {}
+    - type: Link
+      properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Customers, font_size: null, wrap_on: mobile, font: '',
+        col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '{}',
+        spacing_below: small, italic: false, background: '', bold: false, underline: false,
+        icon: ''}
+      name: customer_link
+      layout_properties: {}
+      components: []
+      event_bindings: {click: customer_link_click}
+  - type: FlowPanel
+    properties: {role: dash-link, spacing: none, align: left, tooltip: '', border: '',
+      foreground: '', visible: false, spacing_above: small, spacing_below: small,
+      background: ''}
+    name: settings_panel
+    layout_properties: {}
+    components:
+    - type: Spacer
+      properties: {height: 32}
+      name: spacer_1_copy_3
+      layout_properties: {width: 14}
+    - type: form:Icons.SettingsSVG
+      properties: {}
+      name: settings_sv_g_1
+      layout_properties: {}
+    - type: Link
+      properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Settings, font_size: null, wrap_on: mobile, font: '',
+        col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
+        spacing_below: small, italic: false, background: '', bold: false, underline: false,
+        icon: ''}
+      name: link_2
+      layout_properties: {}
+- type: FlowPanel
+  properties: {role: dash-link, spacing: none, align: center, tooltip: '', border: '',
+    foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
+  name: signout_panel
+  layout_properties: {grid_position: 'NPJJLK,MNQFQA', slot: sidebar-items-bottom}
+  components:
+  - type: form:Icons.SignOutSVG
+    properties: {}
+    name: sign_out_sv_g_1
+    layout_properties: {}
+  - type: Link
+    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Sign out, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
+      spacing_above: small, icon_align: left, col_widths: '{}', spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: ''}
+    name: signout_link
+    layout_properties: {}
+    components: []
+    event_bindings: {click: signout_link_click}
+- type: ColumnPanel
+  properties: {}
+  name: column_panel_1
+  layout_properties: {slot: default}
+- type: form:Icons.Avatar
+  properties: {}
+  name: avatar_1
+  layout_properties: {slot: avatar}
+is_package: true

@@ -1,0 +1,312 @@
+container:
+  type: HtmlTemplate
+  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
+    role: null, html: '@theme:three_slots.html'}
+  event_bindings: {}
+components:
+- type: form:Tickets.Tickets.TicketList
+  properties: {}
+  name: ticket_list
+  layout_properties: {slot: slot-1}
+  data_bindings: []
+- type: ColumnPanel
+  properties: {role: filter-form-shadow, tooltip: '', border: '', foreground: '',
+    visible: true, wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}',
+    spacing_below: none, background: ''}
+  name: column_panel_1
+  layout_properties: {slot: slot-2}
+  components:
+  - type: ColumnPanel
+    properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"ZTPEUH":2,"MUSPMU":58}',
+      spacing_below: small, background: ''}
+    name: column_panel_1_copy
+    layout_properties:
+      col_widths: {}
+      grid_position: ILXINR,GNLIMQ
+    components:
+    - type: Spacer
+      properties: {height: 32}
+      name: spacer_1
+      layout_properties: {grid_position: 'JFBEHH,ZTPEUH'}
+    - type: Label
+      properties: {role: header-text, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Ticket Filters, font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: medium, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: label_1
+      layout_properties: {grid_position: 'JFBEHH,MUSPMU'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Category:', font_size: null, font: '', spacing_above: none,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2_copy
+    layout_properties:
+      col_widths: {}
+      grid_position: IWUXOP,FAZYTG
+  - type: DropDown
+    properties:
+      role: dropdown-border
+      align: full
+      tooltip: ''
+      placeholder: all
+      border: ''
+      enabled: true
+      foreground: ''
+      items: ['']
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
+    name: category_dropdown
+    layout_properties:
+      col_widths: {}
+      grid_position: QVAFAJ,CVNQLJ
+    data_bindings:
+    - {property: selected_value, code: 'self.filters[''category'']', writeback: true}
+    - {property: items, code: self.categories}
+    event_bindings: {change: load_tickets}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Status:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties:
+      col_widths: {}
+      grid_position: EXRKYX,DSICVF
+  - type: DropDown
+    properties:
+      role: dropdown-border
+      align: full
+      tooltip: ''
+      placeholder: all
+      border: ''
+      enabled: true
+      foreground: ''
+      items: ['', '']
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
+    name: status_dropdown
+    layout_properties:
+      col_widths: {}
+      grid_position: XXIVSQ,WNDPHX
+    data_bindings:
+    - {property: selected_value, code: 'self.filters[''status'']', writeback: true}
+    - {property: items, code: self.status}
+    event_bindings: {change: load_tickets}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Priority:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2_copy_2
+    layout_properties:
+      col_widths: {}
+      grid_position: SJYCRB,ELOZJC
+  - type: DropDown
+    properties:
+      role: dropdown-border
+      align: full
+      tooltip: ''
+      placeholder: all
+      border: ''
+      enabled: true
+      foreground: ''
+      items: ['']
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
+    name: priority_dropdown
+    layout_properties:
+      col_widths: {}
+      grid_position: BPGUMN,FPBQUV
+    data_bindings:
+    - {property: selected_value, code: 'self.filters[''priority'']', writeback: true}
+    - {property: items, code: self.priorities}
+    event_bindings: {change: load_tickets}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Customer:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2_copy_3
+    layout_properties:
+      col_widths: {}
+      grid_position: DWCIZQ,LJQWKN
+  - type: DropDown
+    properties:
+      role: dropdown-border
+      align: full
+      tooltip: ''
+      placeholder: all
+      border: ''
+      enabled: true
+      foreground: ''
+      items: [all]
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
+    name: customer_dropdown
+    layout_properties:
+      col_widths: {}
+      grid_position: QASILX,WUMZWY
+    data_bindings:
+    - {property: selected_value, code: 'self.filters[''customer'']', writeback: true}
+    - {property: items, code: self.customers}
+    event_bindings: {change: load_tickets}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Agent:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2_copy_4
+    layout_properties:
+      col_widths: {}
+      grid_position: HGESDP,JHXPCH
+  - type: DropDown
+    properties:
+      role: dropdown-border
+      align: full
+      tooltip: ''
+      placeholder: all
+      border: ''
+      enabled: true
+      foreground: ''
+      items: ['', '']
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
+    name: agent_dropdown
+    layout_properties:
+      col_widths: {}
+      grid_position: BHZTVJ,KYJMKU
+    data_bindings:
+    - {property: items, code: self.owners}
+    - {property: selected_value, code: 'self.filters[''owner'']', writeback: true}
+    event_bindings: {change: load_tickets}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Created between:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2_copy_5
+    layout_properties:
+      col_widths: {}
+      grid_position: WGHQNY,RQCHQK
+  - type: FlowPanel
+    properties: {}
+    name: flow_panel_1
+    layout_properties:
+      col_widths: {}
+      grid_position: IZEDOQ,EJGVIS
+    components:
+    - type: DatePicker
+      properties: {role: dropdown-border, align: left, max_date: '', pick_time: false,
+        tooltip: '', placeholder: start date, border: '', enabled: true, foreground: '',
+        visible: true, font_size: null, font: '', spacing_above: small, spacing_below: small,
+        italic: false, date: '', min_date: '', background: '', bold: false, underline: false,
+        format: '%d/%m/%Y'}
+      name: start_date_picker
+      layout_properties: {grid_position: 'RULIPG,YWXGKX', width: 204.433}
+      event_bindings: {change: load_tickets_by_date}
+      data_bindings:
+      - {property: date, code: 'self.date_filter[''start'']', writeback: true}
+    - type: DatePicker
+      properties: {role: dropdown-border, align: left, max_date: '', pick_time: false,
+        tooltip: '', placeholder: end date, border: '', enabled: true, foreground: '',
+        visible: true, font_size: null, font: '', spacing_above: small, spacing_below: small,
+        italic: false, date: '', min_date: '', background: '', bold: false, underline: false,
+        format: '%d/%m/%Y'}
+      name: end_date_picker
+      layout_properties: {width: 202.433}
+      event_bindings: {change: load_tickets_by_date}
+      data_bindings:
+      - {property: date, code: 'self.date_filter[''end'']', writeback: true}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Closed between:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2_copy_6
+    layout_properties:
+      col_widths: {}
+      grid_position: HOCVTH,SXMTCF
+  - type: FlowPanel
+    properties: {}
+    name: flow_panel_1_copy
+    layout_properties:
+      col_widths: {}
+      grid_position: GHIXDU,NLZRJP
+    components:
+    - type: DatePicker
+      properties: {role: dropdown-border, align: left, max_date: '', pick_time: false,
+        tooltip: '', placeholder: start date, border: '', enabled: true, foreground: '',
+        visible: true, font_size: null, font: '', spacing_above: small, spacing_below: small,
+        italic: false, date: '', min_date: '', background: '', bold: false, underline: false,
+        format: '%d/%m/%Y'}
+      name: start_date_closed
+      layout_properties: {grid_position: 'RULIPG,YWXGKX', width: 204.433}
+      event_bindings: {change: load_tickets_by_date}
+      data_bindings:
+      - {property: date, code: 'self.date_filter[''closed_start'']', writeback: true}
+    - type: DatePicker
+      properties: {role: dropdown-border, align: left, max_date: '', pick_time: false,
+        tooltip: '', placeholder: end date, border: '', enabled: true, foreground: '',
+        visible: true, font_size: null, font: '', spacing_above: small, spacing_below: small,
+        italic: false, date: '', min_date: '', background: '', bold: false, underline: false,
+        format: '%d/%m/%Y'}
+      name: end_date_closed
+      layout_properties: {width: 202.433}
+      event_bindings: {change: load_tickets_by_date}
+      data_bindings:
+      - {property: date, code: 'self.date_filter[''closed_end'']', writeback: true}
+  - type: Link
+    properties: {role: grey-link, url: '', align: right, tooltip: '', border: '',
+      foreground: 'theme:Gray 600', visible: true, text: Clear filters, font_size: null,
+      wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small, icon_align: left,
+      col_widths: '', spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: clear_filters_link
+    layout_properties:
+      col_widths: {}
+      grid_position: RPXTYJ,PFILVK
+    event_bindings: {click: clear_filters_link_click}
+is_package: true
+custom_component: false

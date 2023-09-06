@@ -1,0 +1,143 @@
+container:
+  type: HtmlTemplate
+  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
+    role: null, html: '@theme:three_slots.html'}
+  event_bindings: {show: form_show}
+components:
+- type: form:Dashboard.Content
+  properties: {}
+  name: dash_content
+  layout_properties: {slot: slot-1}
+- type: ColumnPanel
+  properties: {role: filter-form-shadow, tooltip: '', border: '', foreground: '',
+    visible: true, wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{"LSFCHG":40,"YYPAVW":40}',
+    spacing_below: none, background: ''}
+  name: column_panel_1
+  layout_properties: {slot: slot-2}
+  components:
+  - type: Label
+    properties: {role: header-text, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Filter by, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: medium, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_1
+    layout_properties: {grid_position: 'UBGWXZ,PCCWTR'}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Category:', font_size: null, font: '', spacing_above: none,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2_copy
+    layout_properties:
+      col_widths: {}
+      grid_position: TWSWIA,HDNOVN
+  - type: DropDown
+    properties:
+      role: dropdown-border
+      align: full
+      tooltip: ''
+      placeholder: select a category
+      border: ''
+      enabled: true
+      foreground: ''
+      items: ['']
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
+    name: category_dropdown
+    layout_properties:
+      col_widths: {}
+      grid_position: KKBLVD,LSFCHG
+    data_bindings:
+    - {property: selected_value, code: 'self.filters[''category'']', writeback: true}
+    - {property: items, code: self.categories}
+    event_bindings: {change: load_dash_data}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Priority:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2_copy_2
+    layout_properties:
+      col_widths: {}
+      grid_position: VIWQLA,GKZVWG
+  - type: DropDown
+    properties:
+      role: dropdown-border
+      align: full
+      tooltip: ''
+      placeholder: select a priority
+      border: ''
+      enabled: true
+      foreground: ''
+      items: ['']
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
+    name: priority_dropdown
+    layout_properties: {grid_position: 'RURLCL,YYPAVW'}
+    data_bindings:
+    - {property: selected_value, code: 'self.filters[''priority'']', writeback: true}
+    - {property: items, code: self.priorities}
+    event_bindings: {change: load_dash_data}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: 'Date range:', font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_2
+    layout_properties:
+      col_widths: {}
+      grid_position: YRQNTI,XYNYGX
+  - type: DatePicker
+    properties: {role: dropdown-border, align: left, max_date: '', pick_time: false,
+      tooltip: '', placeholder: start date, border: '', enabled: true, foreground: '',
+      visible: true, font_size: null, font: '', spacing_above: small, spacing_below: small,
+      italic: false, date: '', min_date: '', background: '', bold: false, underline: false,
+      format: '%d/%m/%Y'}
+    name: start_date_picker
+    layout_properties:
+      col_widths: {}
+      grid_position: PUJHRJ,GCNPYA
+    data_bindings:
+    - {property: date, code: 'self.date_filters[''start'']', writeback: true}
+    event_bindings: {change: change_date_range}
+  - type: DatePicker
+    properties: {role: dropdown-border, align: left, max_date: '', pick_time: false,
+      tooltip: '', placeholder: end date, border: '', enabled: true, foreground: '',
+      visible: true, font_size: null, font: '', spacing_above: small, spacing_below: small,
+      italic: false, date: '', min_date: '', background: '', bold: false, underline: false,
+      format: '%d/%m/%Y'}
+    name: end_date_picker
+    layout_properties:
+      col_widths: {}
+      grid_position: NTJMTP,FEXEUP
+    data_bindings:
+    - {property: date, code: 'self.date_filters[''end'']', writeback: true}
+    event_bindings: {change: change_date_range}
+  - type: Link
+    properties: {role: grey-link, url: '', align: right, tooltip: '', border: '',
+      foreground: 'theme:Gray 600', visible: true, text: Reset filters, font_size: null,
+      wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small, icon_align: left,
+      col_widths: '', spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: reset_filters_link
+    layout_properties:
+      col_widths: {}
+      grid_position: IIPRCE,FBLLQW
+    event_bindings: {click: reset_filters_link_click}
+is_package: true

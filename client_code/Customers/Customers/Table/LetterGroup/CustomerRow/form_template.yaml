@@ -1,0 +1,57 @@
+container:
+  type: DataRowPanel
+  properties: {role: customers-repeating-panel, align: left, tooltip: '', border: '',
+    foreground: '', auto_display_data: true, visible: true, font_size: null, font: '',
+    spacing_above: none, spacing_below: none, italic: false, background: '', bold: false,
+    underline: false}
+components:
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Gray
+      600', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: company_label
+  layout_properties: {column: QPORYP}
+  data_bindings:
+  - {property: text, code: 'self.item[''company'']'}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Gray
+      600', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: phone_label
+  layout_properties: {column: GNXQKV}
+  data_bindings:
+  - {property: text, code: 'self.item[''phone''] if self.item[''phone''] else '''''}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Gray
+      600', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: email_label
+  layout_properties: {column: YIMVYM}
+  data_bindings:
+  - {property: text, code: 'self.item[''email'']'}
+- type: CheckBox
+  properties: {role: null, align: left, tooltip: '', border: '', enabled: true, foreground: '',
+    visible: true, text: '', font_size: null, font: '', spacing_above: small, spacing_below: small,
+    italic: false, background: '', bold: false, checked: false, underline: false}
+  name: check_box_1
+  layout_properties: {column: QBAWOM}
+  event_bindings: {change: check_box_1_change}
+- type: Link
+  properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: 'theme:Gray
+      600', visible: true, text: '', font_size: null, wrap_on: mobile, font: '', col_spacing: tiny,
+    spacing_above: small, icon_align: left, col_widths: '{}', spacing_below: small,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: customer_link
+  layout_properties: {column: GBQNGE}
+  components: []
+  event_bindings: {click: customer_link_click}
+  data_bindings:
+  - {property: text, code: '"{} {}".format(self.item[''first_name''], self.item[''last_name''])'}
+- type: form:Icons.AvatarTransparent
+  properties: {}
+  name: avatar_transparent_1
+  layout_properties: {grid_position: 'OEMVPY,GWGEKE', column: IDOAON}
+is_package: true

@@ -1,0 +1,187 @@
+correct_dependency_ids: {}
+dependencies: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/anvil/users.yml
+  client_config: {allow_signup: true, enable_automatically: false, use_email: true,
+    confirm_email: false, use_google: true, allow_remember_me: true, remember_me_days: 30,
+    use_facebook: false}
+  server_config: {user_table: 507721}
+- source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/anvil/email.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/anvil/secrets.yml
+  client_config: {}
+  server_config: {}
+package_name: TicketingApp
+allow_embedding: false
+name: Clone of Ticketing App (2)
+runtime_options: {version: 2, server_version: python3-full, client_version: '3', server_spec: null}
+metadata: {}
+startup_form: Login
+native_deps: {head_html: '<script src="//d3js.org/d3.v4.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>'}
+db_schema:
+  priorities:
+    title: Priorities
+    client: search
+    server: full
+    columns:
+    - name: name
+      admin_ui: {width: 200}
+      type: string
+  customers:
+    title: Customers
+    client: none
+    server: full
+    columns:
+    - name: first_name
+      admin_ui: {width: 200}
+      type: string
+    - name: last_name
+      admin_ui: {width: 200}
+      type: string
+    - name: title
+      admin_ui: {width: 200}
+      type: string
+    - name: company
+      admin_ui: {width: 200}
+      type: string
+    - name: email
+      admin_ui: {width: 200}
+      type: string
+    - name: phone
+      admin_ui: {width: 200}
+      type: string
+    - name: created
+      admin_ui: {width: 200}
+      type: datetime
+  categories:
+    title: Categories
+    client: search
+    server: full
+    columns:
+    - name: name
+      admin_ui: {width: 200}
+      type: string
+  types:
+    title: Types
+    client: search
+    server: full
+    columns:
+    - name: name
+      admin_ui: {width: 200}
+      type: string
+  users:
+    title: Users
+    client: none
+    server: full
+    columns:
+    - name: email
+      admin_ui: {width: 200}
+      type: string
+    - name: enabled
+      admin_ui: {width: 100}
+      type: bool
+    - name: signed_up
+      admin_ui: {width: 200}
+      type: datetime
+    - name: last_login
+      admin_ui: {width: 200}
+      type: datetime
+    - name: remembered_logins
+      admin_ui: {width: 200}
+      type: simpleObject
+    - name: name
+      admin_ui: {width: 200}
+      type: string
+  status:
+    title: Status
+    client: search
+    server: full
+    columns:
+    - name: name
+      admin_ui: {width: 200}
+      type: string
+  currentticketno:
+    title: CurrentTicketNo
+    client: search
+    server: full
+    columns:
+    - name: number
+      admin_ui: {width: 200}
+      type: number
+  tickets:
+    title: Tickets
+    client: none
+    server: full
+    columns:
+    - name: title
+      admin_ui: {width: 135}
+      type: string
+    - name: priority
+      admin_ui: {width: 125}
+      type: link_single
+      target: priorities
+    - name: status
+      admin_ui: {width: 116}
+      type: link_single
+      target: status
+    - name: category
+      admin_ui: {width: 172}
+      type: link_single
+      target: categories
+    - name: date
+      admin_ui: {width: 200}
+      type: datetime
+    - name: customer
+      admin_ui: {width: 111}
+      type: link_single
+      target: customers
+    - name: due
+      admin_ui: {width: 117}
+      type: date
+    - name: owner
+      admin_ui: {width: 196}
+      type: link_single
+      target: users
+    - name: closed
+      admin_ui: {width: 200}
+      type: datetime
+    - name: number
+      admin_ui: {width: 200}
+      type: number
+    - name: externals
+      admin_ui: {width: 200}
+      type: link_multiple
+      target: customers
+  messages:
+    title: Messages
+    client: none
+    server: full
+    columns:
+    - name: details
+      admin_ui: {width: 200}
+      type: string
+    - name: type
+      admin_ui: {width: 200}
+      type: link_single
+      target: types
+    - name: ticket
+      admin_ui: {width: 200}
+      type: link_single
+      target: tickets
+    - name: date
+      admin_ui: {width: 200}
+      type: datetime
+    - name: agent
+      admin_ui: {width: 200}
+      type: link_single
+      target: users
+renamed: true

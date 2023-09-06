@@ -1,0 +1,82 @@
+container:
+  type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+components:
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: tiny, spacing_above: small, col_widths: '{"PWSEIT":71,"WOQJZA":4,"DQYVCN":5}',
+    spacing_below: small, background: ''}
+  name: column_panel_3
+  layout_properties: {grid_position: 'LNPNXW,IXFDFD', full_width_row: true}
+  components:
+  - type: Spacer
+    properties: {height: 32}
+    name: spacer_2
+    layout_properties: {grid_position: 'AGHIES,DQYVCN'}
+  - type: ColumnPanel
+    properties: {role: thick-grey-border, tooltip: '', border: '', foreground: '',
+      visible: true, wrap_on: never, col_spacing: medium, spacing_above: small, col_widths: '{"WRPKKR":5,"PBHSPI":33}',
+      spacing_below: small, background: white}
+    name: column_panel_1
+    layout_properties: {width: 913, grid_position: 'AGHIES,PWSEIT XPALVF,BTSHIW'}
+    components:
+    - type: form:Icons.AvatarTransparent
+      properties: {}
+      name: avatar_white_1
+      layout_properties: {grid_position: 'OYAUZP,WRPKKR'}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: '', font_size: null, font: '', spacing_above: none, icon_align: left,
+        spacing_below: none, italic: false, background: '', bold: false, underline: false,
+        icon: ''}
+      name: to_label
+      layout_properties: {grid_position: 'OYAUZP,PBHSPI TOQTGS,UDFPMD'}
+      data_bindings:
+      - {property: text, code: self.set_to_labels()}
+    - type: Label
+      properties: {role: muted-text, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: '', font_size: null, font: '', spacing_above: none, icon_align: left,
+        spacing_below: small, italic: false, background: '', bold: false, underline: false,
+        icon: ''}
+      name: date_label
+      layout_properties: {grid_position: 'OYAUZP,PBHSPI OIHAGS,XGPXAA'}
+      data_bindings:
+      - {property: text, code: 'self.item[''date''].strftime("%d %b %y, at %H:%m %p")'}
+    - type: Label
+      properties: {}
+      name: from_label
+      layout_properties: {grid_position: 'UHNFIE,BWEVWG'}
+      data_bindings:
+      - {property: text, code: self.set_from_labels()}
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: '', font_size: null, font: '', spacing_above: large,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: ''}
+      name: details_label
+      layout_properties: {grid_position: 'EYWLSS,OPCWXX'}
+      data_bindings:
+      - {property: text, code: 'self.item[''details'']'}
+    data_bindings: []
+  - type: FlowPanel
+    properties: {role: null, spacing: medium, align: right, tooltip: '', border: '',
+      foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
+    name: flow_panel_1
+    layout_properties: {grid_position: 'AGHIES,PWSEIT LVVYVO,BGNTBS'}
+    components:
+    - type: form:Icons.AvatarSmall
+      properties: {}
+      name: avatar_small_1
+      layout_properties: {grid_position: 'GCMCJG,ZWFEYX LPXMKY,QQOBTK'}
+    data_bindings:
+    - {property: align, code: '"left" if self.item[''type''][''name''] == "INCOMING_EMAIL"
+        else "right"'}
+  - type: Spacer
+    properties: {height: 32}
+    name: spacer_1
+    layout_properties: {grid_position: 'AGHIES,WOQJZA'}
+  data_bindings: []
+item_type: {table_id: null}
+is_package: true
